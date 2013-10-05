@@ -39,7 +39,7 @@ public class AndroidTipCalculatorActivity extends Activity {
 		Button clickedBtn = (Button) v;
 		String clickedText = clickedBtn.getText().toString();
 		double tipPercent = Double.valueOf(clickedText.substring(0, clickedText.length()-1));
-		if( StringUtils.isNotEmpty(etBillInput.getText().toString())) {
+		if( StringUtils.isNotEmpty(etBillInput.getText().toString()) && StringUtils.isNumeric(etBillInput.getText().toString())) {
 			double billAmnt = Double.valueOf(etBillInput.getText().toString());
 			double tipAmnt = (billAmnt * tipPercent) / 100;
 			double totaAmnt = billAmnt + tipAmnt;
@@ -49,7 +49,7 @@ public class AndroidTipCalculatorActivity extends Activity {
 			String displaTotalAmnt = getString(R.string.totalStaticLbl) + "   "  + String.valueOf(df.format(totaAmnt));
 			tvTotalOP.setText(displaTotalAmnt);
 		}else {
-			Toast.makeText(this, "Please enter a bill amount.", Toast.LENGTH_SHORT).show();
+			Toast.makeText(this, "Please enter a valid bill amount.", Toast.LENGTH_SHORT).show();
 		}
 	}
 	
