@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">AndroidTipCalculator</string>
+    <string name="app_name">Tipper</string>
     <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
-
+	<string name="inputHint">Enter bill Amount</string>
+	<string name="tipStaticLbl">Tip is:</string>
+	<string name="totalStaticLbl">Total is:</string>
+	<string name="ten_pct">10%</string>
+	<string name="fifteen_pct">15%</string>
+	<string name="twenty_pct">20%</string>
+	
 </resources>

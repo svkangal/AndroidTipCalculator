@@ -8,9 +8,81 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".AndroidTipCalculatorActivity" >
 
-    <TextView
+    <EditText
+        android:id="@+id/etBillInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="19dp"
+        android:ems="10"
+        android:hint="@string/inputHint" >
+
+        <requestFocus />
+    </EditText>
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/etBillInput"
+        android:layout_alignRight="@+id/etBillInput"
+        android:layout_below="@+id/etBillInput"
+        android:layout_marginTop="74dp"
+        android:orientation="horizontal" >
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvTipOP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/linearLayout1"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="86dp"
+        android:text="@string/tipStaticLbl"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/tvTotalOP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvTipOP"
+        android:layout_alignTop="@+id/tvTipOP"
+        android:layout_marginTop="39dp"
+        android:text="@string/totalStaticLbl"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Button
+        android:id="@+id/btn10pct"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/linearLayout1"
+        android:layout_alignTop="@+id/linearLayout1"
+        android:layout_marginLeft="32dp"
+        android:onClick="onBtnClick"
+        android:text="@string/ten_pct" />
+
+    <Button
+        android:id="@+id/btn15pct"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btn10pct"
+        android:layout_alignBottom="@+id/btn10pct"
+        android:layout_toRightOf="@+id/btn10pct"
+        android:onClick="onBtnClick"
+        android:text="@string/fifteen_pct" />
+
+    <Button
+        android:id="@+id/btn20pct"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/linearLayout1"
+        android:layout_toRightOf="@+id/btn15pct"
+        android:onClick="onBtnClick"
+        android:text="@string/twenty_pct" />
 
 </RelativeLayout>
