@@ -3,6 +3,7 @@ package com.android.androidtipcalculator;
 import java.text.DecimalFormat;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.math.NumberUtils;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -60,7 +61,7 @@ public class AndroidTipCalculatorActivity extends Activity {
 					tvMsgId.setText("");
 				}
 				double tipPercent = Double.valueOf(progress);
-				if(StringUtils.isNotEmpty(etBillInput.getText().toString()) && StringUtils.isNumeric(etBillInput.getText().toString())) {
+				if(StringUtils.isNotEmpty(etBillInput.getText().toString()) && NumberUtils.isNumber(etBillInput.getText().toString())) {
 					double billAmnt = Double.valueOf(etBillInput.getText().toString());
 					double tipAmnt = (billAmnt * tipPercent) / 100;
 					double totaAmnt = billAmnt + tipAmnt;
@@ -86,7 +87,7 @@ public class AndroidTipCalculatorActivity extends Activity {
 		Button clickedBtn = (Button) v;
 		String clickedText = clickedBtn.getText().toString();
 		double tipPercent = Double.valueOf(clickedText.substring(0, clickedText.length()-1));
-		if(StringUtils.isNotEmpty(etBillInput.getText().toString()) && StringUtils.isNumeric(etBillInput.getText().toString())) {
+		if(StringUtils.isNotEmpty(etBillInput.getText().toString()) && NumberUtils.isNumber(etBillInput.getText().toString())) {
 			double billAmnt = Double.valueOf(etBillInput.getText().toString());
 			double tipAmnt = (billAmnt * tipPercent) / 100;
 			double totaAmnt = billAmnt + tipAmnt;
