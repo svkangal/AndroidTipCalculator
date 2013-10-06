@@ -85,4 +85,29 @@
         android:onClick="onBtnClick"
         android:text="@string/twenty_pct" />
 
+    <SeekBar
+        android:id="@+id/sbPct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true" />
+
+    <TextView
+        android:id="@+id/tvSeekProgress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sbPct"
+        android:layout_centerHorizontal="true"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/tvMsgId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvSeekProgress"
+        android:layout_centerHorizontal="true"
+        android:text=""
+        android:textColor="#ff0000"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
 </RelativeLayout>

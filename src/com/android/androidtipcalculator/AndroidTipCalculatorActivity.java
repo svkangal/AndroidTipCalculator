@@ -10,6 +10,8 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,6 +20,9 @@ public class AndroidTipCalculatorActivity extends Activity {
 	private EditText etBillInput; 
 	private TextView tvTipOP;
 	private TextView tvTotalOP;
+	private TextView tvSeekProgress;
+	private TextView tvMsgId;
+	private SeekBar sbPct;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +31,48 @@ public class AndroidTipCalculatorActivity extends Activity {
 		etBillInput = (EditText) findViewById(R.id.etBillInput);
 		tvTipOP = (TextView) findViewById(R.id.tvTipOP);
 		tvTotalOP = (TextView) findViewById(R.id.tvTotalOP);
+		tvSeekProgress = (TextView) findViewById(R.id.tvSeekProgress);
+		tvMsgId =  (TextView) findViewById(R.id.tvMsgId);
+		sbPct = (SeekBar) findViewById(R.id.sbPct);
+		addSeekEventListner();
+	}
+
+	private void addSeekEventListner() {
+		sbPct.setOnSeekBarChangeListener( new OnSeekBarChangeListener() {
+			
+			@Override
+			public void onStopTrackingTouch(SeekBar seekBar) {
+				
+			}
+			
+			@Override
+			public void onStartTrackingTouch(SeekBar seekBar) {
+				
+			}
+			
+			@Override
+			public void onProgressChanged(SeekBar seekBar, int progress,
+					boolean fromUser) {
+				tvSeekProgress.setText(String.valueOf(progress) + "%");
+				if(progress > 20) {
+					tvMsgId.setText("Don't you think, you are being too generous :)");
+				}else {
+					tvMsgId.setText("");
+				}
+				double tipPercent = Double.valueOf(progress);
+				if(StringUtils.isNotEmpty(etBillInput.getText().toString()) && StringUtils.isNumeric(etBillInput.getText().toString())) {
+					double billAmnt = Double.valueOf(etBillInput.getText().toString());
+					double tipAmnt = (billAmnt * tipPercent) / 100;
+					double totaAmnt = billAmnt + tipAmnt;
+					DecimalFormat df = new DecimalFormat("#.##"); 
+					String displaTipAmnt = getString(R.string.tipStaticLbl) + "   "  + String.valueOf(df.format(tipAmnt));
+					tvTipOP.setText(displaTipAmnt);
+					String displaTotalAmnt = getString(R.string.totalStaticLbl) + "   "  + String.valueOf(df.format(totaAmnt));
+					tvTotalOP.setText(displaTotalAmnt);
+				}
+			}
+		});
+		
 	}
 
 	@Override
@@ -39,7 +86,7 @@ public class AndroidTipCalculatorActivity extends Activity {
 		Button clickedBtn = (Button) v;
 		String clickedText = clickedBtn.getText().toString();
 		double tipPercent = Double.valueOf(clickedText.substring(0, clickedText.length()-1));
-		if( StringUtils.isNotEmpty(etBillInput.getText().toString()) && StringUtils.isNumeric(etBillInput.getText().toString())) {
+		if(StringUtils.isNotEmpty(etBillInput.getText().toString()) && StringUtils.isNumeric(etBillInput.getText().toString())) {
 			double billAmnt = Double.valueOf(etBillInput.getText().toString());
 			double tipAmnt = (billAmnt * tipPercent) / 100;
 			double totaAmnt = billAmnt + tipAmnt;
