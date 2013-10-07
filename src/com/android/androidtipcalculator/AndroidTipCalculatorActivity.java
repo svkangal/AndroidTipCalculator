@@ -70,6 +70,8 @@ public class AndroidTipCalculatorActivity extends Activity {
 					tvTipOP.setText(displaTipAmnt);
 					String displaTotalAmnt = getString(R.string.totalStaticLbl) + "   "  + String.valueOf(df.format(totaAmnt));
 					tvTotalOP.setText(displaTotalAmnt);
+				}else {
+					Toast.makeText(getApplicationContext(), "Please enter a valid bill amount.", Toast.LENGTH_SHORT).show();
 				}
 			}
 		});
